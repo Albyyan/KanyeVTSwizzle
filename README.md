@@ -27,3 +27,33 @@ Word2Vec transforms words into dense **300-dimensional vectors** based on their 
 - Captures **semantic meaning** rather than raw word frequencies.
 - Sometimes more subtle, but **less effective at highlighting rare or class-unique words** (e.g., the N-word).
 
+## 📊 Results
+
+Both models achieve around **80% accuracy** on the test set. Interestingly, both tend to perform **better at identifying Kanye lyrics** than Taylor Swift's.
+
+This may be due to:
+- **Stronger, more distinctive vocabulary** in Kanye's lyrics
+- Use of **slang, unique phrasing, or uncommon words** that stand out more
+- Taylor’s lyrics being more **linguistically generic**, which may overlap with common language across both classes
+
+### 🔍 Model Comparison
+
+| Metric            | TF-IDF + SVM | Word2Vec + SVM |
+|------------------|--------------|----------------|
+| Accuracy          | ~80%         | ~79%           |
+| Strengths         | Highlights rare, discriminative words | Captures semantic similarity between words |
+| Weaknesses        | Can't understand context or meaning | Averages can dilute strong signals |
+| Bias              | Skews toward Kanye for rare or offensive words | More smoothed, less confident predictions |
+
+---
+
+## 🔧 Future Improvements
+
+Some possible directions to improve performance and interpretability:
+
+- 🔁 **Train Word2Vec on the lyrics dataset** rather than Google News for domain-specific embeddings
+- 🧠 **Try transformer-based models** like BERT or RoBERTa for deeper contextual understanding
+- 🗣️ Add **explanations for predictions**, e.g. which words contributed most (using SHAP or LIME)
+- 📱 Make it mobile-friendly and deploy to a public URL
+- 🎤 Add support for other artists (e.g. Drake, Lana Del Rey) and turn this into a full lyric-authorship classifier
+
